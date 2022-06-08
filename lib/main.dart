@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
         child: Container(
+          height: 300,
           child: BlocBuilder<CatLogBloc, CatelogState>(
             builder: ((context, state) {
               if (state is CatelogLoading) {
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               } else if (state is Catelogloaded) {
                 list.clear();
                 list.add(state.mainModel);
-                return listData(list);
+                return Center(child: listData(list));
               } else {
                 return Center(
                   child: Text('Something went wrong'),
@@ -64,7 +65,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
         itemCount: list.length,
         itemBuilder: (ctx, i) {
-          return Text(list[i]!.coord!.lon.toString());
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('longitude' + list[i]!.coord!.lon.toString()),
+              Text('latitude' + list[i]!.coord!.lat.toString()),
+              Text('humidity' + list[i]!.main!.humidity.toString()),
+              Text('temperature' + list[i]!.main!.temp.toString()),
+              Text('description' + list[i]!.weather![i].description.toString()),
+            ],
+          );
         });
   }
 }

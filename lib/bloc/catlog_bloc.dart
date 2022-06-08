@@ -21,21 +21,5 @@ class CatLogBloc extends Bloc<CatelogEvent, CatelogState> {
   }
 }
 
-// @override
-// Stream<CatelogState> mapEventToState(CatelogEvent event) async* {
-//   if (event is EventLoading) {
-//     yield CatelogLoading();
-//   } else if (event is EventLoaded) {
-//     try {
-//       MainModel? data = await repository!.getData();
-//       yield Catelogloaded(data!);
-//     } catch (_) {
-//       yield CatelogError();
-//     }
-//   } else {
-//     yield CatelogError();
-//   }
-// }
-
 @override
 Stream<CatelogState> _mapCatLogStartedToState() async* {}
